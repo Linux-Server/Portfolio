@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a0a;
+  --bg-alt: #111111;
+  --card: #161616;
+  --card-border: rgba(255,255,255,0.07);
+  --card-border-hover: rgba(249,115,22,0.3);
+  --text: #f0f0f0;
+  --text-secondary: #b0b0b0;
+  --text-muted: #666666;
+  --accent: #f97316;
+  --accent-light: #fb923c;
+  --accent-bright: #fdba74;
+  --gold: #fbbf24;
+  --red: #ef4444;
+  --ember: #ff6b35;
+  --green: #22c55e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; background: var(--bg); }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: rgba(249,115,22,0.35); color: #fff; }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+
+h1, h2, h3, h4 {
+  font-family: 'Bebas Neue', 'Syne', sans-serif;
+  font-weight: 400;
+  line-height: 1.05;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Keyframes ──────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+@keyframes pulse-dot {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%     { transform: scale(1.5); opacity: 0.3; }
+}
+@keyframes bounce-y {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(8px); }
+}
+@keyframes ember-rise {
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-120vh) scale(0); }
+}
+@keyframes ring-pulse {
+  0%,100% { transform: scale(1); opacity: 0.15; }
+  50%     { transform: scale(1.08); opacity: 0.3; }
+}
+@keyframes glow-breathe {
+  0%,100% { opacity: 0.4; }
+  50%     { opacity: 0.7; }
+}
+
+/* ─── Noise overlay ──────────────────────────────── */
+.noise-overlay {
+  position: fixed; inset: -50%; width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ─── Section label ──────────────────────────────── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ─── Fire shimmer name ──────────────────────────── */
+.shimmer-text {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 25%, var(--ember) 50%, var(--gold) 75%, var(--accent) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.cursor-blink { animation: blink 0.9s step-end infinite; }
+.glow-accent { text-shadow: 0 0 40px rgba(249,115,22,0.6), 0 0 80px rgba(249,115,22,0.2); }
+
+/* ─── Card ───────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-border-hover);
+  box-shadow: 0 8px 32px rgba(249,115,22,0.1), 0 0 0 1px rgba(249,115,22,0.15);
+}
+
+/* ─── Animations ─────────────────────────────────── */
+.anim-nav     { animation: slideDown 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-fade-up { animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both; }
+.anim-fade-in { animation: fadeIn 0.6s ease both; }
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.35s; }
+.delay-4 { animation-delay: 0.5s; }
+.delay-5 { animation-delay: 0.65s; }
+.delay-6 { animation-delay: 0.8s; }
+.delay-7 { animation-delay: 1s; }
+
+.bounce-y  { animation: bounce-y 2s ease-in-out infinite; }
+.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+/* ─── Ember particles ────────────────────────────── */
+.ember {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: ember-rise linear infinite;
+}
+
+/* ─── Orange ring glow ───────────────────────────── */
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(249,115,22,0.2);
+  animation: ring-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
