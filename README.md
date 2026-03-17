@@ -1,8 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sachin Murali — Portfolio
 
-## Getting Started
+Personal portfolio website built with Next.js, Tailwind CSS, Framer Motion, and Three.js.
 
-First, run the development server:
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) v18 or higher
+- npm, yarn, pnpm, or bun
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/sachin-murali/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+## Running Locally
+
+Start the development server:
 
 ```bash
 npm run dev
@@ -10,27 +36,51 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm run start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── app/
+│   ├── layout.tsx       # Root layout, fonts, metadata
+│   ├── page.tsx         # Main page
+│   └── globals.css      # Global styles
+├── components/          # Section components
+│   ├── Nav.tsx
+│   ├── Hero.tsx
+│   ├── NeuralNetwork3D.tsx
+│   ├── Experience.tsx
+│   ├── Projects.tsx
+│   ├── Skills.tsx
+│   ├── Awards.tsx
+│   ├── Contact.tsx
+│   └── Footer.tsx
+└── public/              # Static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js 16](https://nextjs.org/) — React framework
+- [Tailwind CSS v4](https://tailwindcss.com/) — Styling
+- [Framer Motion](https://www.framer.com/motion/) — Animations
+- [Three.js](https://threejs.org/) + [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) — 3D graphics
+- [TypeScript](https://www.typescriptlang.org/) — Type safety
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deploy instantly with [Vercel](https://vercel.com/):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+```
+
+Or connect the repository to Vercel for automatic deployments on push.
