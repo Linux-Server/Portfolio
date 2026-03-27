@@ -17,13 +17,14 @@ export default function Nav() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <>
       <nav
+        aria-label="Main navigation"
         className="anim-nav"
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
@@ -35,11 +36,11 @@ export default function Nav() {
       >
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '16px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           {/* Logo */}
-          <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'var(--card)', border: '1px solid var(--card-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ color: 'var(--accent)', fontFamily: 'DM Mono, monospace', fontSize: '0.75rem', fontWeight: 700 }}>SM</span>
+          <a href="#" aria-label="Sachin Murali — home" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <div aria-hidden="true" style={{ width: '36px', height: '36px', borderRadius: '10px', background: 'var(--card)', border: '1px solid var(--card-border)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span style={{ color: 'var(--accent)', fontFamily: 'var(--font-dm-mono), monospace', fontSize: '0.75rem', fontWeight: 700 }}>SM</span>
             </div>
-            <span style={{ fontFamily: 'DM Mono, monospace', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
+            <span style={{ fontFamily: 'var(--font-dm-mono), monospace', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
               sachin.murali
             </span>
           </a>
@@ -50,6 +51,7 @@ export default function Nav() {
               <a
                 key={l.href}
                 href={l.href}
+                className="nav-link"
                 style={{
                   padding: '8px 16px',
                   fontSize: '0.88rem',
@@ -59,14 +61,13 @@ export default function Nav() {
                   borderRadius: '8px',
                   transition: 'all 0.2s',
                 }}
-                onMouseOver={e => { e.currentTarget.style.color = 'var(--text)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
-                onMouseOut={e => { e.currentTarget.style.color = 'var(--text-secondary)'; e.currentTarget.style.background = 'transparent'; }}
               >
                 {l.label}
               </a>
             ))}
             <a
               href="#contact"
+              className="nav-cta"
               style={{
                 marginLeft: '8px',
                 padding: '8px 20px',
@@ -78,19 +79,21 @@ export default function Nav() {
                 textDecoration: 'none',
                 transition: 'all 0.2s',
               }}
-              onMouseOver={e => (e.currentTarget.style.background = 'var(--accent-light)')}
-              onMouseOut={e => (e.currentTarget.style.background = 'var(--accent)')}
             >
               Hire Me
             </a>
           </div>
 
-          {/* Mobile menu button — hidden on md+ via Tailwind, no inline display */}
+          {/* Mobile menu button */}
           <button
             className="md:hidden"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
             onClick={() => setMenuOpen(!menuOpen)}
             style={{
               width: '40px', height: '40px',
+              display: 'flex',
               alignItems: 'center', justifyContent: 'center',
               borderRadius: '10px', border: '1px solid var(--card-border)',
               background: 'transparent', color: 'var(--text-secondary)', cursor: 'pointer',
@@ -103,7 +106,7 @@ export default function Nav() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden" style={{ position: 'fixed', top: '72px', left: '16px', right: '16px', zIndex: 40, background: 'var(--card)', border: '1px solid var(--card-border)', borderRadius: '16px', padding: '12px' }}>
+        <div id="mobile-menu" className="md:hidden" style={{ position: 'fixed', top: '72px', left: '16px', right: '16px', zIndex: 40, background: 'var(--card)', border: '1px solid var(--card-border)', borderRadius: '16px', padding: '12px' }}>
           {links.map(l => (
             <a
               key={l.href}

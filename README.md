@@ -1,86 +1,47 @@
-# Sachin Murali — Portfolio
+# Sachin Murali's Portfolio
 
-Personal portfolio website built with Next.js, Tailwind CSS, Framer Motion, and Three.js.
+Personal portfolio website built with Next.js 16, Tailwind CSS v4, Framer Motion, and Three.js.
 
-## Prerequisites
+## Tech Stack
 
-- [Node.js](https://nodejs.org/) v18 or higher
-- npm, yarn, pnpm, or bun
+- **Next.js 16** — App Router, TypeScript, strict mode
+- **Tailwind CSS v4** — via `@tailwindcss/postcss`
+- **Framer Motion** — scroll and entrance animations
+- **Three.js** — 3D neural network background (`@react-three/fiber` + `@react-three/drei`)
+- **lucide-react** — icons
 
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/sachin-murali/portfolio.git
-cd portfolio
-```
-
-2. Install dependencies:
+## Getting Started
 
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
-```
-
-## Running Locally
-
-Start the development server:
-
-```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+## Scripts
 
-## Building for Production
-
-```bash
-npm run build
-npm run start
-```
+| Command           | Description              |
+|-------------------|--------------------------|
+| `npm run dev`     | Start development server |
+| `npm run build`   | Production build         |
+| `npm run start`   | Start production server  |
+| `npm run lint`    | Run ESLint               |
 
 ## Project Structure
 
 ```
-├── app/
-│   ├── layout.tsx       # Root layout, fonts, metadata
-│   ├── page.tsx         # Main page
-│   └── globals.css      # Global styles
-├── components/          # Section components
-│   ├── Nav.tsx
-│   ├── Hero.tsx
-│   ├── NeuralNetwork3D.tsx
-│   ├── Experience.tsx
-│   ├── Projects.tsx
-│   ├── Skills.tsx
-│   ├── Awards.tsx
-│   ├── Contact.tsx
-│   └── Footer.tsx
-└── public/              # Static assets
+app/
+  layout.tsx        Root layout and font loading
+  page.tsx          Single page composing all sections
+  globals.css       Global styles (Tailwind v4)
+
+components/
+  Nav.tsx           Navigation bar
+  Hero.tsx          Hero section with 3D background
+  NeuralNetwork3D.tsx  Three.js neural network scene
+  Experience.tsx    Work experience timeline
+  Projects.tsx      Project cards grid
+  Skills.tsx        Technical skills
+  Awards.tsx        Awards and achievements
+  Contact.tsx       Contact information
+  Footer.tsx        Site footer
 ```
-
-## Tech Stack
-
-- [Next.js 16](https://nextjs.org/) — React framework
-- [Tailwind CSS v4](https://tailwindcss.com/) — Styling
-- [Framer Motion](https://www.framer.com/motion/) — Animations
-- [Three.js](https://threejs.org/) + [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) — 3D graphics
-- [TypeScript](https://www.typescriptlang.org/) — Type safety
-
-## Deployment
-
-Deploy instantly with [Vercel](https://vercel.com/):
-
-```bash
-npm run build
-```
-
-Or connect the repository to Vercel for automatic deployments on push.
