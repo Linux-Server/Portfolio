@@ -3,9 +3,9 @@
 import { Mail, Phone, MapPin, Github, Linkedin, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 const contactItems = [
-  { Icon: Mail,   label: 'Email',    value: 'sachin6624@gmail.com',  href: 'mailto:sachin6624@gmail.com', color: '#f97316' },
-  { Icon: Phone,  label: 'Phone',    value: '+91 81388 57524',       href: 'tel:+918138857524',           color: '#fbbf24' },
-  { Icon: MapPin, label: 'Location', value: 'Cochin, Kerala, India', href: '#',                           color: '#fb923c' },
+  { Icon: Mail,   label: 'Email',    value: 'sachin6624@gmail.com',  href: 'mailto:sachin6624@gmail.com',                   external: false, color: '#f97316' },
+  { Icon: Phone,  label: 'Phone',    value: '+91 81388 57524',       href: 'tel:+918138857524',                             external: false, color: '#fbbf24' },
+  { Icon: MapPin, label: 'Location', value: 'Cochin, Kerala, India', href: 'https://maps.google.com/?q=Cochin,Kerala,India', external: true,  color: '#fb923c' },
 ];
 
 const socials = [
@@ -31,8 +31,8 @@ export default function Contact() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 460px), 1fr))', gap: '24px' }}>
           {/* Left: contact info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {contactItems.map(({ Icon, label, value, href, color }) => (
-              <a key={label} href={href} className="card" style={{ padding: '18px 24px', display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit' }}>
+            {contactItems.map(({ Icon, label, value, href, external, color }) => (
+              <a key={label} href={href} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="card" style={{ padding: '18px 24px', display: 'flex', alignItems: 'center', gap: '16px', textDecoration: 'none', color: 'inherit' }}>
                 <div style={{ width: '44px', height: '44px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: `${color}12`, border: `1px solid ${color}25` }}>
                   <Icon size={18} style={{ color }} />
                 </div>

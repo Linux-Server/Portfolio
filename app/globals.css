@@ -25,11 +25,10 @@ html { scroll-behavior: smooth; background: var(--bg); }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-outfit), sans-serif;
   font-size: 16px;
   line-height: 1.7;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
 }
 
 ::selection { background: rgba(249,115,22,0.35); color: #fff; }
@@ -38,7 +37,7 @@ body {
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
 
 h1, h2, h3, h4 {
-  font-family: 'Bebas Neue', 'Syne', sans-serif;
+  font-family: var(--font-bebas), var(--font-syne), sans-serif;
   font-weight: 400;
   line-height: 1.05;
   text-transform: uppercase;
@@ -100,7 +99,7 @@ h1, h2, h3, h4 {
 
 /* ─── Section label ──────────────────────────────── */
 .section-label {
-  font-family: 'DM Mono', monospace;
+  font-family: var(--font-dm-mono), monospace;
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -164,4 +163,13 @@ h1, h2, h3, h4 {
   border: 1.5px solid rgba(249,115,22,0.2);
   animation: ring-pulse 4s ease-in-out infinite;
   pointer-events: none;
+}
+
+/* ─── Nav hover states ───────────────────────────── */
+.nav-link:hover {
+  color: var(--text) !important;
+  background: rgba(255,255,255,0.05);
+}
+.nav-cta:hover {
+  background: var(--accent-light) !important;
 }

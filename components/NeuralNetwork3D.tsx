@@ -187,11 +187,12 @@ function ParticleField() {
 
 export default function NeuralNetwork3D() {
   return (
-    <div style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+    <div aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
       <Canvas
         camera={{ position: [0, 0, 6], fov: 60 }}
         style={{ background: 'transparent' }}
-        gl={{ alpha: true, antialias: true }}
+        gl={{ alpha: true, antialias: true, powerPreference: 'low-power' }}
+        dpr={[1, 1.5]}
       >
         <Nodes />
         <FloatingRings />

@@ -1,5 +1,3 @@
-'use client';
-
 export default function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--card-border)', padding: '28px 0', background: 'var(--bg)' }}>

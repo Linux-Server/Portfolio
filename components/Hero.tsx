@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, useState, useMemo, lazy, Suspense } from 'react';
 import { ArrowDown, Github, Linkedin, ExternalLink } from 'lucide-react';
 
 const NeuralNetwork3D = lazy(() => import('./NeuralNetwork3D'));
@@ -27,13 +27,13 @@ function TypeWriter() {
 
 /* Floating ember sparks */
 function Embers() {
-  const embers = Array.from({ length: 20 }, (_, i) => ({
+  const embers = useMemo(() => Array.from({ length: 20 }, () => ({
     left: `${Math.random() * 100}%`,
     size: Math.random() * 4 + 2,
     delay: Math.random() * 8,
     dur: Math.random() * 6 + 5,
     color: Math.random() > 0.5 ? 'var(--accent)' : 'var(--ember)',
-  }));
+  })), []);
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 3 }}>
       {embers.map((e, i) => (
@@ -61,7 +61,7 @@ export default function Hero() {
     <section id="about" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'var(--bg)' }}>
 
       {/* Layer 1: B&W photo */}
-      <div style={{
+      <div aria-hidden="true" style={{
         position: 'absolute', inset: 0,
         backgroundImage: 'url(/sachin-hero.jpg)',
         backgroundSize: 'cover',
@@ -71,14 +71,14 @@ export default function Hero() {
       }} />
 
       {/* Layer 2: Dark + orange gradient overlay */}
-      <div style={{
+      <div aria-hidden="true" style={{
         position: 'absolute', inset: 0,
         background: 'linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.55) 45%, rgba(10,10,10,0.88) 100%)',
         pointerEvents: 'none',
       }} />
 
       {/* Layer 3: Orange radial glow (like the reference) */}
-      <div style={{
+      <div aria-hidden="true" style={{
         position: 'absolute',
         left: '30%', top: '50%', transform: 'translate(-50%, -50%)',
         width: '700px', height: '700px',
@@ -88,9 +88,9 @@ export default function Hero() {
       }} />
 
       {/* Concentric rings */}
-      <div className="hero-ring" style={{ left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: '400px', height: '400px', zIndex: 1 }} />
-      <div className="hero-ring" style={{ left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: '550px', height: '550px', zIndex: 1, animationDelay: '1s', borderColor: 'rgba(251,191,36,0.12)' }} />
-      <div className="hero-ring" style={{ left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: '700px', height: '700px', zIndex: 1, animationDelay: '2s', borderColor: 'rgba(249,115,22,0.08)' }} />
+      <div aria-hidden="true" className="hero-ring" style={{ left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: '400px', height: '400px', zIndex: 1 }} />
+      <div aria-hidden="true" className="hero-ring" style={{ left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: '550px', height: '550px', zIndex: 1, animationDelay: '1s', borderColor: 'rgba(251,191,36,0.12)' }} />
+      <div aria-hidden="true" className="hero-ring" style={{ left: '30%', top: '50%', transform: 'translate(-50%,-50%)', width: '700px', height: '700px', zIndex: 1, animationDelay: '2s', borderColor: 'rgba(249,115,22,0.08)' }} />
 
       {/* Layer 4: 3D Neural Network */}
       <Suspense fallback={null}>
@@ -162,10 +162,10 @@ export default function Hero() {
 
           {/* Location */}
           <div className="anim-fade-in delay-7" style={{ marginTop: '24px', display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.78rem', color: 'var(--text-muted)', fontFamily: 'DM Mono, monospace' }}>
-            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)' }} />
+            <span aria-hidden="true" style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent)' }} />
             Cochin, Kerala, India
-            <span style={{ opacity: 0.3 }}>·</span>
-            sachin6624@gmail.com
+            <span aria-hidden="true" style={{ opacity: 0.3 }}>·</span>
+            <a href="mailto:sachin6624@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>sachin6624@gmail.com</a>
           </div>
         </div>
       </div>
